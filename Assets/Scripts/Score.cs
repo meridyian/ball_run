@@ -16,7 +16,6 @@ public class Score : MonoBehaviour
             currentScore++;
             currentScoreText.text = "Score :" + currentScore;
 
-            Debug.Log(currentScore);
             Destroy(other.gameObject);
 
         }
