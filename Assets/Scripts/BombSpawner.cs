@@ -10,10 +10,11 @@ public class BombSpawner : MonoBehaviour
 
     public Transform[] spawnPoints;
 
-    //public float next_bombing = 0f;
+    public bool isGameOver;
 
     private void Start()
     {
+
         StartCoroutine(Bomb());
     }
 
@@ -29,7 +30,7 @@ public class BombSpawner : MonoBehaviour
 
     IEnumerator Bomb()
     {
-        while(true)
+        while(!isGameOver)
         {
             SpawnBomb();
             yield return new WaitForSeconds(bombingInterval);
