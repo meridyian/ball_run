@@ -4,37 +4,32 @@ using UnityEngine;
 
 public class BombSpawner : MonoBehaviour
 {
-    public Transform[] spawnPoints;
-    public float bombingInterval = 1.5f;
-    public float bombing_time = 2f;
-    public GameObject bombPrefab;
+    public float bombingInterval = 0.75f;
+    
+    [SerializeField] GameObject bombPrefab;
 
-    void Start()
+    public Transform[] spawnPoints;
+
+    public float next_bombing = 0f;
+
+    void Update()
     {
-        if(Time.time >= bombing_time)
+        if (next_bombing <= Time.time)
         {
-            SpawnBombs();
-            bombing_time = Time.time + bombingInterval;
+            SpawnBomb();
+            next_bombing = Time.time + bombingInterval;
         }
-        
     }
 
-
-    void SpawnBombs()
+    void SpawnBomb()
     {
         int randomIndex = Random.Range(0, spawnPoints.Length);
+        Transform spawnPoint = spawnPoints[randomIndex];
 
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            // do smth for spawnPoints.Length amount of times
-
-            if (randomIndex != i)
-            {
-                Instantiate(bombPrefab, spawnPoints[i].position, Quaternion.identity);
-                
-            }
-
-        }
+        Instantiate(bombPrefab, spawnPoint.position, spawnPoint.rotation);
     }
+
+
+
 
 }

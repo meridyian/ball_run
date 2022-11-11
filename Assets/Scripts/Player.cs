@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public float speed = 15f;
-    public float mapWidth = 5f;
-    private Rigidbody2D rb;
+    public float mapWidth = 7f;
+    public Rigidbody2D rb;
 
     void Start()
     {
@@ -25,4 +26,19 @@ public class Player : MonoBehaviour
 
         rb.MovePosition(newPosition);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("bomb"))
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
 }
