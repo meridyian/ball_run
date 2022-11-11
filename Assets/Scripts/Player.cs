@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float speed = 15f;
     public float mapWidth = 7f;
     public Rigidbody2D rb;
+    private Score score;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

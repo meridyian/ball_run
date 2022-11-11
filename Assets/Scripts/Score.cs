@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-    private float currentScore = 0f;
+    [SerializeField] float currentScore = 0f;
+    [SerializeField] private Text currentScoreText;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("bomb"))
         {
             currentScore++;
+            currentScoreText.text = "Score :" + currentScore;
+
             Debug.Log(currentScore);
             Destroy(other.gameObject);
 
