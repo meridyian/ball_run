@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
     public float mapWidth = 7f;
     //public Rigidbody2D rb;
     private Score score;
+    
 
-   
+    
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -26,14 +29,16 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("bomb"))
         {
             Die();
+            
         }
     }
 
     private void Die()
     {
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameObject.SetActive(false);
     }
+
+
 
 
 }
