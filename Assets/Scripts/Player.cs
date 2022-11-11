@@ -7,25 +7,18 @@ public class Player : MonoBehaviour
 {
     public float speed = 15f;
     public float mapWidth = 7f;
-    public Rigidbody2D rb;
+    //public Rigidbody2D rb;
     private Score score;
 
-    void Start()
-    {
-        //Call your rb
-        rb = GetComponent<Rigidbody2D>();
-    }
-
+   
     // Update is called once per frame
     void FixedUpdate()
     {
         float x = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * speed;
 
-        Vector2 newPosition = rb.position + Vector2.right * x;
+        Vector3 movement = new Vector3(x, 0, 0);
 
-        newPosition.x = Mathf.Clamp(newPosition.x, -mapWidth, mapWidth);
-
-        rb.MovePosition(newPosition);
+        transform.Translate(movement * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
