@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a35d496999c4553bbbc98bfb3de299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombingInterval: 0.5
+  bombingInterval: 0.3
   bombPrefab: {fileID: 445059296681095373, guid: 4e583ebcad0b1427c92bb59571286e51, type: 3}
   spawnPoints:
   - {fileID: 1718929451}
@@ -636,7 +636,6 @@ MonoBehaviour:
   - {fileID: 126392662}
   - {fileID: 1930603119}
   - {fileID: 1455355519}
-  next_bombing: 0
 --- !u!1 &1455355518
 GameObject:
   m_ObjectHideFlags: 0

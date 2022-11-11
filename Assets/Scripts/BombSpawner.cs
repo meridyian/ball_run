@@ -10,16 +10,14 @@ public class BombSpawner : MonoBehaviour
 
     public Transform[] spawnPoints;
 
-    public float next_bombing = 0f;
+    //public float next_bombing = 0f;
 
-    void Update()
+    private void Start()
     {
-        if (next_bombing <= Time.time)
-        {
-            SpawnBomb();
-            next_bombing = Time.time + bombingInterval;
-        }
+        StartCoroutine(Bomb());
     }
+
+
 
     void SpawnBomb()
     {
@@ -28,6 +26,18 @@ public class BombSpawner : MonoBehaviour
 
         Instantiate(bombPrefab, spawnPoint.position, spawnPoint.rotation);
     }
+
+    IEnumerator Bomb()
+    {
+        while(true)
+        {
+            SpawnBomb();
+            yield return new WaitForSeconds(bombingInterval);
+            //next_bombing = next_bombing + bombingInterval;
+        }
+    }
+
+    
 
 
 
