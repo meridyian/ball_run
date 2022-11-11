@@ -5,12 +5,18 @@ using UnityEngine;
 public class BombSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
-
+    public float bombingInterval = 1.5f;
+    public float bombing_time = 2f;
     public GameObject bombPrefab;
 
     void Start()
     {
-        SpawnBombs();
+        if(Time.time >= bombing_time)
+        {
+            SpawnBombs();
+            bombing_time = Time.time + bombingInterval;
+        }
+        
     }
 
 
@@ -25,6 +31,7 @@ public class BombSpawner : MonoBehaviour
             if (randomIndex != i)
             {
                 Instantiate(bombPrefab, spawnPoints[i].position, Quaternion.identity);
+                
             }
 
         }
